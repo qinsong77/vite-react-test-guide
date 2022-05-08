@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    'jest/globals': true
   },
   extends: [
     'plugin:react/recommended', //
@@ -19,7 +20,8 @@ module.exports = {
   plugins: [
     'react', //
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    'jest'
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -28,5 +30,6 @@ module.exports = {
     // 'react/jsx-first-prop-new-line': [1, 'multiline'],
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
     'react/jsx-max-props-per-line': [1, { when: 'multiline' }]
+    // quotes: ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: false }]
   }
 }
