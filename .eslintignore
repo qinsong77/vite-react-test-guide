@@ -1,0 +1,5 @@
+node_modules
+build
+src/statics
+public
+README.md
