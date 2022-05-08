@@ -10,6 +10,10 @@
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "lint:prettier": "prettier -c --write \"src/**/*.{ts,tsx}\" --end-of-line auto"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint -E GIT_PARAMS"
+  },
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
@@ -22,10 +26,6 @@
     "*.{css,less}": [
       "stylelint --syntax less --fix"
     ]
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "commitlint -E GIT_PARAMS"
   },
   "dependencies": {
     "react": "^18.0.0",
