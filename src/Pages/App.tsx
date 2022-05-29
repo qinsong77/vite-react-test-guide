@@ -1,6 +1,25 @@
 import { useState } from 'react'
 import logo from '../assets/logo.svg'
 import './App.css'
+import { DynamicForm, TFormItem } from '@components/DynamicForm'
+import OrderStatus from '@/RTL/act/OrderStatus'
+const Json: TFormItem[] = [
+  {
+    id: 1,
+    type: 'SearchInput',
+    label: 'SearchInput',
+  },
+  {
+    id: 2,
+    type: 'CheckBox',
+    label: 'checkBox',
+  },
+  {
+    id: 3,
+    type: 'Button',
+    label: 'Button',
+  },
+]
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,8 +42,7 @@ function App() {
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Learn React
           </a>
           {' | '}
@@ -32,12 +50,13 @@ function App() {
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             Vite Docs
           </a>
         </p>
       </header>
+      <DynamicForm json={Json} />
+      <OrderStatus orderId={'12'} />
     </div>
   )
 }

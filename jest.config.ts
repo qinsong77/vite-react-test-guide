@@ -7,14 +7,18 @@ export default {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
-    '\\.(css|sass|scss)$': 'identity-obj-proxy'
+    '\\.(css|sass|scss)$': 'identity-obj-proxy',
+    '^@api': '<rootDir>/src/api/index.ts',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   transform: {
     '\\.[jt]sx?$': 'babel-jest',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/jest/fileTransformer.js'
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/jest/fileTransformer.js',
   },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   // 是否显示覆盖率报告
-  collectCoverage: true
+  collectCoverage: true,
 }
 // export default {
 //   // All imported modules in your tests should be mocked automatically

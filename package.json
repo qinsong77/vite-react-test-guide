@@ -5,15 +5,13 @@
   "scripts": {
     "dev": "vite",
     "test": "jest",
+    "test:watch": "npm test -- --watch",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "precommit": "lint-staged",
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
-    "lint:prettier": "prettier -c --write \"src/**/*.{ts,tsx}\" --end-of-line auto"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "commitlint -E GIT_PARAMS"
+    "lint:prettier": "prettier -c --write \"src/**/*.{ts,tsx}\" --end-of-line auto",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -29,11 +27,13 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
@@ -41,6 +41,7 @@
     "@commitlint/config-conventional": "^16.2.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
+    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^27.5.0",
     "@types/react": "^18.0.0",
@@ -59,16 +60,18 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-testing-library": "^5.5.0",
+    "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "stylelint": "^14.8.2",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "typescript": "^4.6.3",
-    "vite": "^2.9.7",
-    "yorkie": "^2.0.0"
+    "vite": "^2.9.7"
   }
 }

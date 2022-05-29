@@ -1,6 +1,6 @@
 module.exports = {
-  printWidth: 80, // 每行代码长度（默认175）
-  trailingComma: "none", // 在对象或数组最后一个元素后面是否加逗号
+  printWidth: 80, // 每行代码长度（80）
+  trailingComma: "es5", // 在对象或数组最后一个元素后面是否加逗号, 在ES5中加尾逗号
   tabWidth: 2, // 每个tab相当于多少个空格（默认2）
   useTabs: false, // 使用tab（制表符）缩进而非空格
   semi: false, // 是否在行尾加分号

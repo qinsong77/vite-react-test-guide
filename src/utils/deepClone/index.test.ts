@@ -7,10 +7,10 @@ test('测试deep clone ', () => {
     personalInfo: {
       name: 'sy',
       address: {
-        city: 'cd'
+        city: 'cd',
       },
-      birth: new Date('2022-05-08T18:32:08.670Z')
-    }
+      birth: new Date('2022-05-08T18:32:08.670Z'),
+    },
   }
   expect(deepClone(Obj)).toEqual({
     id: 101,
@@ -18,9 +18,9 @@ test('测试deep clone ', () => {
     personalInfo: {
       name: 'sy',
       address: {
-        city: 'cd'
+        city: 'cd',
       },
-      birth: new Date('2022-05-08T18:32:08.670Z')
-    }
+      birth: new Date('2022-05-08T18:32:08.670Z'),
+    },
   })
 })
