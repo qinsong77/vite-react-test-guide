@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { checkStatus } from '@api'
 
 const OrderStatus: React.FC<{ orderId: string }> = ({ orderId }) => {

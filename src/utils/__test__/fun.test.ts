@@ -1,4 +1,4 @@
-import { forEach } from './fun'
+import { forEach } from '../fun'
 
 describe('mock example', () => {
   const fn = jest.fn((x) => console.log(x)) // mock

@@ -9,4 +9,6 @@ const ImperativeCounter: React.FC<any> = (props: any, ref: React.Ref<any>) => {
   return <div>The count is: {count}</div>
 }
 
-export default React.forwardRef<any, any>(ImperativeCounter)
+export default React.forwardRef((props, ref) => (
+  <ImperativeCounter props={props} ref={ref} />
+))

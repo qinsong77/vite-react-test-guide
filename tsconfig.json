@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "types": ["node", "jest"],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -15,16 +16,27 @@
     "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": "./",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./src/*"],
-      "@api": ["./src/api"],
-      "@config": ["./src/config"],
-      "@api/*": ["./src/api/*"],
-      "@components/*": ["./src/components/*"],
-      "@common/*": ["./src/common/*"]
+      "@/*": ["src/*"],
+      "@api": ["src/api"],
+      "@config": ["src/config"],
+      "@api/*": ["src/api/*"],
+      "@components/*": ["src/components/*"],
+      "@common/*": ["src/common/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.spec.jsx",
+    "**/*.test.jsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -2,17 +2,35 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-
+// import { pathsToModuleNameMapper } from 'ts-jest'
+// import { compilerOptions } from './tsconfig.json'
 export default {
+  globals: {
+    extensionsToTreatAsEsm: ['.ts', '.js'],
+    'ts-jest': {
+      useESM: true,
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
+
+  preset: 'ts-jest/presets/js-with-ts-esm',
+
+  // from https://stackoverflow.com/a/57916712/15076557
+  transformIgnorePatterns: [
+    'node_modules/(?!(module-that-needs-to-be-transformed)/)',
+  ],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
     '\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^@api': '<rootDir>/src/api/index.ts',
-    '^@/(.*)$': '<rootDir>/src/$1',
+    // '^@/(.*)$': '<rootDir>/src/$1',
+    // 不兼容 @api这种直接使用的index.ts这种
+    // ...pathsToModuleNameMapper(compilerOptions.paths),
   },
   transform: {
-    '\\.[jt]sx?$': 'babel-jest',
+    // '\\.[jt]sx?$': 'babel-jest',
+    // '\\.[jt]sx?$': 'ts-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/jest/fileTransformer.js',
   },

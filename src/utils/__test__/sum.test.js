@@ -4,7 +4,7 @@
 //   expect(sum(1, 2)).toBe(3)
 // })
 
-import { sum } from './sum'
+import { sum } from '../sum'
 
 describe('sum function', () => {
   test('adds 1 + 2 to equal 3', () => {
