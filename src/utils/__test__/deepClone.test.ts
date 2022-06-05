@@ -1,4 +1,4 @@
-import { deepClone } from './index'
+import { deepClone } from '@/utils/deepClone'
 
 test('测试deep clone ', () => {
   const Obj = {
