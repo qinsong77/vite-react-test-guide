@@ -4,6 +4,7 @@ type User = {
   id: string
   name: string
 }
+
 function getUser(): Promise<User> {
   return Promise.resolve({ id: '1', name: 'Robin' })
 }
@@ -29,7 +30,9 @@ function SearchInput() {
     <div>
       {user ? <p>Signed in as {user.name}</p> : null}
 
-      <Search value={search} onChange={handleChange}>
+      <Search
+        value={search}
+        onChange={handleChange}>
         Search:
       </Search>
 
@@ -44,11 +47,16 @@ type SearchInputProps = {
   children: React.ReactNode
 }
 
-function Search({ value, onChange, children }: SearchInputProps) {
+export function Search({ value, onChange, children }: SearchInputProps) {
   return (
     <div>
       <label htmlFor="search">{children}</label>
-      <input id="search" type="text" value={value} onChange={onChange} />
+      <input
+        id="search"
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
     </div>
   )
 }

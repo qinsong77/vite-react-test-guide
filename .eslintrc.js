@@ -10,7 +10,10 @@ module.exports = {
   extends: [
     'plugin:react/recommended', //
     'standard',
+    // 'prettier',
     'plugin:prettier/recommended',
+    'plugin:jest-dom/recommended',
+    'plugin:testing-library/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

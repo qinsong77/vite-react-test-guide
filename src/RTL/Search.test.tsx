@@ -8,7 +8,9 @@ describe('Search', () => {
     const onChange = jest.fn()
     // Arrange 编排
     render(
-      <Search value="" onChange={onChange}>
+      <Search
+        value=""
+        onChange={onChange}>
         Search:
       </Search>
     )

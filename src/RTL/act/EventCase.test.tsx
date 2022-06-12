@@ -1,4 +1,4 @@
-import EventCase from '@/RTL/act/EventCase'
+import EventCase from './EventCase'
 import * as ReactDOM from 'react-dom'
 import { act } from '@testing-library/react'
 
@@ -16,6 +16,6 @@ it('should increment a counter', () => {
       button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     }
   })
-  expect(button.innerHTML).toBe('3') // this fails, it's actually "1"!
+  expect(button.textContent).toBe('3') // this fails, it's actually "1"!
   // expect(button.innerHTML).toBe('3')
 })
