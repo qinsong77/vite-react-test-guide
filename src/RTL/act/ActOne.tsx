@@ -13,11 +13,8 @@ const ActOne = () => {
 
   return (
     <>
-      <h3>
-        Hello <span>World</span>
-      </h3>
       <button onClick={handleClick}>Click me</button>
-      {title}
+      <span>{title}</span>
     </>
   )
 }

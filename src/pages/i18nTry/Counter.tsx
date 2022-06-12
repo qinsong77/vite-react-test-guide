@@ -1,16 +1,15 @@
 // https://dev.to/adrai/how-to-properly-internationalize-a-react-application-using-i18next-3hdb
 import React, { useEffect, useState } from 'react'
-
-import { useAppSelector, useAppDispatch } from '@/store'
+import { useAppDispatch, useAppSelector } from '@/store'
 import {
   decrement,
   increment,
-  incrementByAmount,
   incrementAsync,
+  incrementByAmount,
   incrementIfOdd,
   selectCount,
 } from '@/store/counter/counterSlice'
-import { useTranslation, Trans } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { lngs } from '@/i18n'
 import styles from './Counter.module.css'
 

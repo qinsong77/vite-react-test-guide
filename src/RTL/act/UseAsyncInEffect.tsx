@@ -10,12 +10,14 @@ const UseAsyncInEffect = () => {
       )
       const { title } = await response.json()
 
+      // await new Promise((resolve) => setTimeout(resolve, 0))
+
       setTitle(title) // this happens after the test is done
     }
 
     fetchData()
   }, [])
 
-  return <>{title}</>
+  return <h3>{title}</h3>
 }
 export default UseAsyncInEffect

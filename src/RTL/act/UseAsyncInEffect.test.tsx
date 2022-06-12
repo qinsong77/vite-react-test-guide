@@ -1,41 +1,59 @@
-import { render, screen, act } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import UseAsyncInEffect from './UseAsyncInEffect'
 
-beforeEach(() => {
-  fetch.resetMocks()
-})
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ test: 100 }),
+  })
+) as jest.Mock
 
-it('doesnt really fetch', async () => {
-  const fakeData = { fake: 'data' }
-  jest.spyOn(global, 'fetch').mockImplementation(setupFetchStub(fakeData))
+describe('test use async comp', () => {
+  // fail  ❌
+  it('renders title', () => {
+    jest.spyOn(window, 'fetch').mockResolvedValue({
+      json: async () => ({ title: 'Fetched' }),
+    } as any)
 
-  const res = await fetch('anyUrl')
-  const json = await res.json()
-  expect(json).toEqual({ data: fakeData })
+    render(<UseAsyncInEffect />)
 
-  global.fetch.mockClear()
-})
+    // this happens before the state update is scheduled
+    expect(screen.getByText('Fetched')).toBeInTheDocument()
+  })
+  // success ✅
+  it('renders title with findBy', async () => {
+    jest.spyOn(window, 'fetch').mockResolvedValue({
+      json: async () => ({ title: 'Fetched' }),
+    } as any)
 
-it('renders title', () => {
-  // https://jaketrent.com/post/mock-fetch-jest-test
+    render(<UseAsyncInEffect />)
 
-  const fakeData = {
-    userId: 1,
-    id: 1,
-    title:
-      'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
-  }
-
-  window.fetch = jest.fn().mockImplementation(setupFetchStub(fakeData))
-
-  // @ts-ignore
-  jest.spyOn(window, 'fetch').mockResolvedValue({
-    json: async () => fakeData,
+    // this happens before the state update is scheduled
+    expect(await screen.findByText('Fetched')).toBeInTheDocument()
   })
 
-  render(<UseAsyncInEffect />)
+  // success ✅
+  it('renders title with waitFor', async () => {
+    jest.spyOn(window, 'fetch').mockResolvedValue({
+      json: async () => ({ title: 'Fetched' }),
+    } as any)
 
-  // this happens before the state update is scheduled
-  expect(screen.findByText(fakeData.title)).toBeInTheDocument()
+    render(<UseAsyncInEffect />)
+
+    // eslint: Prefer `findByText` query over using `waitFor` + `getByText`(testing-library/prefer-find-by)
+    await waitFor(() => expect(screen.getByText('Fetched')).toBeInTheDocument())
+  })
+
+  // pass but not good
+  it('renders title 3', async () => {
+    jest.spyOn(window, 'fetch').mockResolvedValue({
+      json: async () => ({ title: 'Fetched' }),
+    } as any)
+    // eslint error
+    await act(() => {
+      render(<UseAsyncInEffect />)
+    })
+
+    // this happens before the state update is scheduled
+    expect(screen.getByText('Fetched')).toBeInTheDocument()
+  })
 })
