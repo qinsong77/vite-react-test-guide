@@ -10,10 +10,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+        />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button
+            type="button"
+            onClick={() => setCount((count) => count + 1)}>
             count is: {count}
           </button>
         </p>
@@ -21,12 +27,22 @@ function App() {
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
-          <Link to="/counter" className="App-link">
+          <Link
+            to="/counter"
+            className="App-link">
             counter
           </Link>
           {' | '}
-          <Link to="/dynamicForm" className="App-link">
+          <Link
+            to="/dynamicForm"
+            className="App-link">
             dynamicForm
+          </Link>
+          {' | '}
+          <Link
+            to="/i18nTry"
+            className="App-link">
+            i18nTry
           </Link>
         </p>
       </header>

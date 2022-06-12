@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { store } from '@/store'
 import AppRoutes from '@/pages/AppRoutes'
 import './index.css'
+import './i18n'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

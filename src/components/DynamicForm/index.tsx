@@ -17,7 +17,13 @@ export const DynamicForm: React.FC<Props> = ({ json }) => {
       {json.map((item) => {
         const { id, type, ...rest } = item
         const Comp = FormItemMap[type]
-        return <Comp key={id} onChange={() => console.log('type')} {...rest} />
+        return (
+          <Comp
+            key={id}
+            onChange={() => console.log('type')}
+            {...rest}
+          />
+        )
       })}
     </>
   )
