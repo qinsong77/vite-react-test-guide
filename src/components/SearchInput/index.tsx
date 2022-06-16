@@ -18,7 +18,7 @@ function SearchInput() {
       const user = await getUser()
       setUser(user)
     }
-
+    // setTimeout(() => loadUser(), 1500)
     loadUser()
   }, [])
 

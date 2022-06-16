@@ -1,6 +1,6 @@
 import SearchInput, { Search } from './index'
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 describe('SearchInput', () => {
@@ -12,6 +12,7 @@ describe('SearchInput', () => {
 
     // succeeds
     expect(screen.getByText(/Searches for/)).toBeInTheDocument()
+    expect(screen.queryByText(/Signed in as/)).not.toBeInTheDocument()
     expect(await screen.findByText(/Signed in as Robin/i)).toBeInTheDocument()
 
     fireEvent.change(screen.getByRole('textbox'), {

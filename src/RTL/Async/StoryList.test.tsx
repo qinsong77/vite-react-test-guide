@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { render, screen, act } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import StoryList from './StoryList'
@@ -31,10 +31,23 @@ describe('StoryList', () => {
 
     expect(items).toHaveLength(2)
   })
+
+  test('fetches stories from an API and fails', async () => {
+    const mockedGet = jest.mocked(axios.get)
+    mockedGet.mockImplementationOnce(() => Promise.reject(new Error()))
+
+    render(<StoryList />)
+
+    await userEvent.click(screen.getByRole('button'))
+
+    const message = await screen.findByText(/Something went wrong/)
+
+    expect(message).toBeInTheDocument()
+  })
 })
 
-describe('App', () => {
-  test('fetches stories from an API and displays them', async () => {
+describe('StoryList 2', () => {
+  test('fetches stories from an API and displays them 2', async () => {
     const stories = [
       { objectID: '1', title: 'Hello' },
       { objectID: '2', title: 'React' },
@@ -42,10 +55,9 @@ describe('App', () => {
 
     const promise = Promise.resolve({ data: { hits: stories } })
 
-    // @ts-ignore
-    axios.get.mockImplementationOnce(() => promise)
+    const mockedGet = jest.mocked(axios.get) // 带上 jest 的类型提示
 
-    render(<StoryList />)
+    mockedGet.mockImplementationOnce(() => promise)
 
     await userEvent.click(screen.getByRole('button'))
 
